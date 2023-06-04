@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }}</title>
+  <link href="../static/css/stile4.css"  type="text/css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="header header__background">
+    <div class="header__menu cont">
+      <a class="header__logotype logotype_white-theme" href="#">Escape.</a>
+        <nav class="header__navigation navigation">
+          <ul class="navigation__list">
+            <li class="navigation__item"><a class="navigation__link" href="#">HOME</a></li>
+            <li class="navigation__item"><a class="navigation__link" href="#">CATEGORIES</a></li>
+            <li class="navigation__item"><a class="navigation__link" href="#">ABOUT</a></li>
+            <li class="navigation__item"><a class="navigation__link" href="#">Contact</a></li>
+          </ul>
+        </nav>
+    </div>
+    <div class="header__blok cont">
+      <div class="header__title">Let's do it together.</div>
+      <div class="header__subtitle">We travel the world in search of stories. Come along for the ride.</div>
+      <div class="buton"><a class="header__button button" href="#">View Latest Posts</a></div></div>
+  </header>
+  <div class="pagination">
+    <ul class="pagination__links">
+      <li class="pagination__item"><a class="pagination__link" href="#">Nature</a></li>
+      <li class="pagination__item"><a class="pagination__link" href="#">Photography</a></li>
+      <li class="pagination__item"><a class="pagination__link" href="#">Relaxation</a></li>
+      <li class="pagination__item"><a class="pagination__link" href="#">Vacation</a></li>
+      <li class="pagination__item"><a class="pagination__link" href="#">Travel</a></li>
+      <li class="pagination__item"><a class="pagination__link" href="#">Adventure</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <div class="content__body">
+      <div class="content__feauther-posts">
+        <div class="content__title">Featured Posts</div>
+        <div class="large-posts">
+          {{ range .FeaturedPosts }}
+          <div class="large-post {{ .ImgModifier }}">
+            <a href="{{ .PostURL}}" class="large-post__title">{{ .Title }}</a>
+            <p class="large-post__text">{{ .Subtitle }}</p>
+            <div class="author author_white-color">
+              <img class="author__avatar" src="{{ .CreatorsImage }}" alt="{{ .CreatorsImage }}" large-post__image>
+              <span class="author__username">{{ .CreatorsName }}</span>
+              <div class="author__date">{{ .PublishDate }}</div>  
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      <div class="content__most-recent">
+      <div class="content__title">Most Recent</div>
+      <div class="recent-posts">
+        {{ range .RecentPosts }}
+        <div class="recent-post">
+          <img class="recent-post__image" src='{{ .ImgModifier }}' alt="{{ .Title }}">
+          <div class="recent-post__body">
+            <a href="{{ .PostURL}}" class="recent-post__title">{{ .Title }}</a>
+            <p class="recent-post__text">{{ .Subtitle }}</p>
+          </div>
+          <div class="recent-post__author author_gray-color">
+            <img class="recent-post__avatar" src='{{ .CreatorsImage }}' alt="{{ .CreatorsImage }}">
+            <span class="recent-post__username">{{ .CreatorsName }}</span>
+            <span class="recent-post__date">{{ .PublishDate }}</span>    
+          </div>
+        </div>
+        {{ end }}
+      </div>   
+    </div>
+    </div>
+    </div>
+  </div>
+  <footer class="footer footer__background">
+    <div class="mailing">
+      <div class="mailing__title">Stay in Touch</div>
+      <form class="mailing__form" action="https://echo.htmlacademy.ru" method="post">
+        <input class="mailing__input" type="email" placeholder="Enter your email address" name="email" >
+        <input type="submit" class="mailing__button" value="Submit"></input>
+      </form>
+    </div>
+    <div class="footer__menu">
+      <div class="header__menu cont">
+        <a class="footer__logotype logotype_white-theme" href="#">Escape.</a>
+          <nav class="footer-navigation navigation">
+            <ul class="navigation__list">
+              <li class="navigation__item"><a class="footer-navigation__link" href="#">HOME</a></li>
+              <li class="navigation__item"><a class="footer-navigation__link" href="#">CATEGORIES</a></li>
+              <li class="navigation__item"><a class="footer-navigation__link" href="#">ABOUT</a></li>
+              <li class="navigation__item"><a class="footer-navigation__link" href="#">Contact</a></li>
+            </ul>
+          </nav>
+      </div>
+    </div> 
+  </footer>
+</body>
+</html>

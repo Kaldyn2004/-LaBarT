@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+  <meta charset="UTF-8" />
+  <title>The road ahead</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link  href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&display=swap"  rel="stylesheet"/>
+  <link href="../static/css/stile4.css"  type="text/css" rel="stylesheet" />
+ </head>
+ <body>
+  <header class="header">
+    <div class="header__menu cont black">
+      <a class="header-dom__logotype logotype_white-theme black" href="#">Escape.</a>
+        <nav class="header__navigation navigation">
+          <ul class="navigation__list">
+            <li class="navigation__item"><a class="navigation__link black" href="/post/{postID}">HOME</a></li>
+            <li class="navigation__item"><a class="navigation__link black" href="/post/{postID}">CATEGORIES</a></li>
+            <li class="navigation__item"><a class="navigation__link black" href="/post/{postID}">ABOUT</a></li>
+            <li class="navigation__item"><a class="navigation__link black" href="/post/{postID}">Contact</a></li>
+          </ul>
+        </nav>
+    </div>
+</header>
+  <div class="post-body">
+    <div class="post-body__topic"></div>
+    <div class="post-body__title">{{ .Title }}</div>
+    <div class="post-body__subtitle">{{ .Subtitle }}</div>
+  <div class="post-body__img"><img class="width" src="../{{ .ImgModifier }}" alt="Красивая картинка" ></div>
+  <div class="post-body__cont">
+    <a class="post-body__text">{{ .Content }}</div>
+  </div>
+ <footer class="footer footer__background">
+  <div class="mailing">
+    <div class="mailing__title">Stay in Touch</div>
+    <form class="mailing__forms" action="https://echo.htmlacademy.ru" method="post">
+      <input class="mailing__input" type="email" placeholder="Enter your email address" name="email" >
+      <input type="submit" class="mailing__button" value="Submit"></input>
+    </form>
+  </div>
+  <div class="footer__menu">
+    <div class="header__menu cont">
+      <a class="footer__logotype logotype_white-theme" href="#">Escape.</a>
+        <nav class="footer-navigation navigation">
+          <ul class="navigation__list">
+            <li class="navigation__item"><a class="footer-navigation__link" href="#">HOME</a></li>
+            <li class="navigation__item"><a class="footer-navigation__link" href="#">CATEGORIES</a></li>
+            <li class="navigation__item"><a class="footer-navigation__link" href="#">ABOUT</a></li>
+            <li class="navigation__item"><a class="footer-navigation__link" href="#">Contact</a></li>
+          </ul>
+        </nav>
+    </div>
+  </div> 
+</footer>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+  <meta charset="UTF-8" />
+  <title>Adminka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link  href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&display=swap"  rel="stylesheet"/>
+  <link href="../static/css/stileAuthor.css"  type="text/css" rel="stylesheet" />
+  <script src="../static/scripts/admin.js" defer></script>
+  <link href="../static/css/styles-admin.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="header">
+    <div class="header__menu cont black">
+      <div class="header__menu_logotype">
+      <a class="header-dom__logotype" href="#">Escape.</a>
+      <a class="header__logotype" href="#">author</a></div>
+        <div class="header__navigation navigation">
+          <a class="header__icon">N</a>
+          <img class="vector__out" src="../static/img/log-out.svg">
+        </div>
+    </div>
+</header>
+<div class="add-post">
+  <form class="form-add-post form" method="post">
+      <div class="content__menu cont">
+        <div class="content__menu_text">
+          <a class="content__menu_title">New Post</a>   
+          <a class="content__menu_subtitle">Fill out the form bellow and publish your article</a> 
+        </div>
+        <input class="add-post__button-publish button-publish text_white-theme" id="publish" type="submit" value="Publish">
+      </div> 
+      <div class="form__error"  id="incorrect-error">
+        <img class="error__icon" src="../static/svg/alert-circle.svg">
+        <a class="error__text">Whoops! Some fields need your attention :o</a>
+       </div>
+      <div class="content__body">
+        <div class="content__body_title"><a class="title__text">Main Information</a></div>  
+        <div class="body">
+          <div class="main-info__input">
+                  <div class="title">
+                    <label class="form__label" for="title">Title</label>
+                    <input type="text" id="title" maxlength="40" class="form-add-post__input input-title" required placeholder="New post">
+                  </div>
+                  <div class="title">
+                    <label class="form__label" for="subtitle">Short description</label>
+                    <input type="text" id="subtitle" maxlength="60" name="subtitle" class="form-add-post__input" required placeholder="Please, enter any description">
+                  </div>
+                  <div class="title">
+                    <label class="form__label" for="author">Author name</label>
+                    <input type="text" id="author" name="author" class="form-add-post__input" required placeholder="Enter author name">
+                  </div>
+                  <div>
+                    <label class="form__label" for="author-image">Author Photo</label>
+                      <div class="form__upload__author-photo upload">
+                          <label class="upload__author-photo upload-image" for="author-image">
+
+                            <div class="upload__avatar">
+                                <div class="upload__avatar upload-icon black-theme" id="notAuthorImg">
+                                    <div class="icon-camera"></div>
+                                </div>
+                            </div> 
+                            <img class="author-image-from-input none" id="showAuthorImage" >                             
+                              <div class="icon-camera none" id="iconCamera"></div>
+                              <div class="upload__text label-upload" id="autorText">Upload</div>
+                          </label>                  
+                          <div class="remove-avatar none" id="removeAvatar"><div class="icon-remove"></div><div class="text_upload-new label-upload" style="color: rgb(232, 105, 97);">Remove</div></div>
+                          <input id="author-image" type="file" name="author-image" title="Upload" accept="image/*" style="visibility: hidden" required>
+                      </div>
+                  </div>
+                  <div class="title">
+                    <label class="form__label" for="date">Publish Date</label>
+                      <input type="date" id="date" name="date" min="01/01/2000" max="01/01/2049" class="form-add-post__input date" required>
+                  </div>
+                  <div class="title">
+                    <label class="form__label" for="article-image">Hero Image</label>
+                      <div class="form__upload__hero-image upload">
+                          <div class="form__upload__article-image__container">
+                              <label class="upload__hero-image_article upload-image" for="article-image">
+                                  <div class="icon-camera"></div>
+                                  <div class="label-upload">Upload</div>
+                              </label>
+                              <input id="article-image" type="file" name="article-image" accept="image/*" style="visibility: hidden;" required>
+                              <img class="article-image-from-input none" id="showArticleImage" >
+                          </div>
+                      </div>
+                      <div class="form__upload__article-image__description">
+                        <p class="form__label-description-article">Size up to 10mb. Format: png, jpeg, gif.</p>
+                        <div class="none" id="big-img-bottom">
+                          <label class="upload-article" for="article-image" style="display: flex;">
+                            <div class="icon-camera"></div>
+                            <div class="text_upload-new label-upload">Upload New</div>
+                          </label>
+                          <div class="remove-article" style="display: flex;">
+                            <div class="icon-remove"></div><div class="text_upload-new label-upload" style="color: rgb(232, 105, 97);">Remove</div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div>
+                    <label class="form__label" for="post-image">Hero Image</label>
+                      <div class="form__upload__hero-image upload__hero-image_post-card upload">
+                          <div class="form__upload__post-image__container">
+                              <label class="upload__hero-image_post upload-image" for="post-image">
+                                  <div class="icon-camera"></div>
+                                  <div class="label-upload">Upload</div>
+                              </label>
+                              <input id="post-image" type="file" name="post-image" accept="image/*" style="visibility: hidden;" required>
+                              <img class="post-image-from-input none" id="showPostImage" >
+                          </div>
+                          <div class="form__upload__article-image__description">
+                            <p class="form__label-description-article" id="form__label-description-article">Size up to 5mb. Format: png, jpeg, gif.</p>
+                            <div class="none" id="big-img-bottom2">
+                              <label class="upload-article" for="post-image" style="display: flex;">
+                                <div class="icon-camera"></div>
+                                <div class="text_upload-new label-upload">Upload New</div>
+                              </label>
+                              <div class="remove-article" id="remove-article" style="display: flex;">
+                                <div class="icon-remove"></div><div class="text_upload-new label-upload" style="color: rgb(232, 105, 97);">Remove</div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+          </div>
+          <div class="main-info__preview preview-form">
+              <p class="preview-form__label">Article preview</p>
+              <div class="preview-form__article">
+                  <div class="preview-form__article__container article-container">
+                      <div class="article-container__dots">
+                          <div class="dot"></div>
+                          <div class="dot"></div>
+                          <div class="dot"></div>
+                      </div>
+                      <div class="decor-query-string"></div>
+                      <div class="article-container__description">
+                          <div class="article-container__title" id="showTitle">New Post</div>
+                          <div class="article-container__subtitle" id="showSubitle">Please, enter any description</div>
+                      </div>
+                      <div class="article-container__image"><img id="previewArticleImage"></div>
+                  </div>
+                  <div class="preview-form__article__blur-right"></div>
+                  <div class="preview-form__article__blur-bottom"></div>
+              </div>
+              <p class="preview-form__label">Post card preview</p>
+              <div class="preview-form__post">
+                  <div class="preview-form__post-card">
+                      <div class="small-cards__small-card small-card">
+                          <div class="small-card__image"><img id="previewPostImage"></div>
+                          <div class="small-card__body">
+                          <div class="small-card__title"><p id="cardShowTitle">New Post</p></div>
+                          <div class="small-card__text text" id="cardShowSubtitle">Please, enter any description</div>
+                          </div>
+                          <div class="small-card__info">
+                          <div class="small-card__image-author"><img id="previewAuthorImage" class="Aimg"></div>
+                          <div class="small-card__name info" id="showAuthor">Enter author name</div>
+                          <div class="small-card__date info" id="showPublishDate">06/08/2004</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="preview-form__post__blur-right"></div>
+                  <div class="preview-form__post__blur-bottom"></div> 
+              </div>
+          </div>
+      </div>
+     </div>
+      <div class="add-post__card-content content">
+          <div class="content__title">Content</div>
+              <p class="form__label" for="content">Post content (plain text)</p>
+              <textarea type="text" id="content" class="form-content__textarea" name="content" placeholder="Type anything you want ..." required></textarea>
+      </div>
+  </form>
+</div>
+</body>
+</html>

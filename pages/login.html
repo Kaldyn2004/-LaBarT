@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script src="../static/scripts/login.js" defer></script>
+  <link href="../static/css/login.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&display=swap" rel="stylesheet"/>
+</head>    
+<body>
+  <main class="background-image">
+    <div class="page-auth">
+      <div class="page-auth__description">
+        <div class="page-auth__logo logo">
+          <p class="page-auth__logo_logo-escape logo-escape">Escape.</p>
+          <p class="page-auth__logo_logo-author logo-author">author</p>
+        </div>
+        <div class="page-auth__subtitle">Log in to start creating</div>
+      </div>
+     <div class="page-auth__form-auth">
+        <div class="form-auth">
+          <div class="form-auth__title">Log In</div>
+            <form class="form-login form" action="https://echo.htmlacademy.ru" method="post">
+               <div class="form__error none" id="field-error">
+                 <img class="error__icon" src="../static/svg/alert-circle.svg">
+                 <a class="error__text">A-Ah! Check all fields.</a>
+               </div>
+               <div class="form__error none"  id="incorrect-error">
+                <img class="error__icon" src="../static/svg/alert-circle.svg">
+                <a class="error__text">Email or password is incorrect.</a>
+               </div>
+               <div class="form-login__border">
+                  <label class="form__label" for="emails">Email</label>
+                  <input id="email" type="email" class="form__input" name="emails" required>
+               </div>
+               <a class="error__log none"  id="errorlog1">Email is required.</a>
+                <div class="form-login__password">
+                  <label class="form__label" for="password-input">Password</label>
+                  <div class="password">
+                    <input id="password" type="password" class="form__input abs" name="password-input" required>
+                      <div class="password-icons" id="toggle-password">
+                        <img class="password-icon" id="closed-eye" src="../static/svg/eye-off.svg">
+                        <img class="password-icon hide" id="opened-eye" src="../static/svg/eye.svg">
+                      </div>
+                  </div>  
+                  <div class="mar"><a class="error__log none" id="errorlog">Password is required.</a></div>
+                </div>
+                <input class="form-login__button" type="submit" id="button" value="Log In">
+            </form>
+        </div>
+     </div>
+    </div> 
+  </main>
+</body>
+</html>

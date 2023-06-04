@@ -1,0 +1,108 @@
+* 
+{
+    font-weight: normal;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+.body__background{
+    background-image: url('../img/AdminBG.jpg');
+    border-radius: 0px;
+    position: relative;
+    background-size: cover;
+    width: 99%;
+    background-repeat: no-repeat;
+}
+.text{
+    display: flex;
+    position: absolute;
+    padding: 333px 0px 0px 230px;
+    width: 300px;
+    height: 300px;
+    flex-direction: column;
+}
+.login__input{
+    font: normal 400 16px/1.5 'Oxygen';    
+    padding: 8px 4px;
+    min-height: 24px;
+    color: #2E2E2E;
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    border: 0;
+    border-bottom: 1px solid #EAEAEA;
+    border-radius: 5px 5px 0px 0px;
+}
+.log__background{
+    position: absolute;
+    margin: 121px 0 0 830px;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    width: 480px;
+    flex-direction: column;
+    display: flex;
+}
+.text__title{
+    margin-bottom: 16px;
+}
+.text__logotype{
+    font: normal 400 45.5px/1 'Lora';
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.text__user{
+    font: normal 400 24.5px/1.27 'Oxygen';
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.text__subtitle{
+    font: normal 400 17px/1.47 'Oxygen';
+    color: #FFFFFF;
+}
+.subtitle{
+    font: normal 400 17/1.47 'Oxygen';
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.log__button{
+    font: normal 400 17px/1.47 'Oxygen';
+}
+.button
+{
+    display: block;
+    font: normal 400 13px/1.54 'Oxygen';
+    border-radius: 3px;
+    background-color: #DD783F;
+    padding: 12px 31px;
+    color: white;
+    text-decoration: none;  
+    text-align: center;  
+    width: 105px;
+    margin: 0px 0px 90px 40px;
+}
+
+.log__user{
+    font: normal 400 34px/1.17 'Lora';
+}
+
+.login__title{
+    margin: 56px 0 49px 40px;
+    font: normal 400 34px/1.18 'Lora';
+}
+.log__clabel_text{
+    font: normal 400 34px/1.17 'Lora';
+}
+.login__label{
+    color: #7A7A7A;
+    font: normal 400 12px/1.33 'Oxygen';
+    margin: 56px 0 10px 40px;
+}
+.log__label{
+    margin: 0px 0 5px 0px;
+}
+.login__input{
+    display: flex;  
+    height: 40px;
+    justify-content: center;
+}

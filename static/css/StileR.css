@@ -1,0 +1,266 @@
+* 
+{
+    font-weight: normal;
+    background-repeat: no-repeat;
+}
+.navigation{
+    color:  #2E2E2E;
+}
+.navigation__list{
+    list-style-type: none;
+    color: #2E2E2E;
+}
+.navigation__item_logo {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 26px;
+    text-decoration: none;
+}
+.navigation__link {
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    text-decoration: none;
+    color: #2E2E2E;
+}
+
+.navigation__logo{
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 26px;
+    color: #2E2E2E;
+    text-decoration: none;
+}
+
+.header{
+    color: #2E2E2E;
+}
+
+.header__title{
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 51px;
+}
+.header__subtitle{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+}
+.head__title{
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 51px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #2E2E2E;
+}
+.head__subtitle{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;    
+    text-align: center;
+    color: rgba(46, 46, 46, 0.63);
+}
+.header__bg{
+    background-image: url(../img/Canion.jpg);
+    height: 500px;
+}
+.header__button{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #FFFFFF;
+    background: #DD783F;
+}
+
+.pagination {
+    color: #768088;
+}
+
+.pagination__links{
+    list-style-type: none;  
+}
+
+.pagination__link{
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #768088;
+}
+
+.content__title{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #2E2E2E;
+}
+.post__img_1{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 35px;
+    color: #101315;
+}
+.post__img_2{
+    background-image: url(../img/Fon.png);
+}
+.post__title{
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+.post__subtitle{
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+.post__avatar{
+    height: 26px;
+}
+.post__name{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 35px;
+    color: rgba(255, 255, 255, 0.7);
+}
+.post__date{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 35px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.recent-post__title{
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #101315;
+}
+
+.recent-post__subtitle{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19px;
+    color: #7A7A7A;
+}
+
+.recent-post__avatar{
+    height: 26px;
+    border-radius: 60px;
+}
+.recent-post__name{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 35px;
+    color: #999999;
+}
+.recent-post__date{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 35px;
+    color: #999999;
+}
+.feedback__bg{
+    background-image: url(../img/Split.png);
+    height: 378px;
+}
+
+.feedback__title{
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    color: #EFEFEF;
+}
+
+.feedback__button{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #F8F8F8;
+}
+
+.feedback__input{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #817F83;
+}
+
+.navigation__item_logo_white {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 26px;
+    text-decoration: none;
+}
+.navigation__link_white {
+    font-family: 'Oxygen';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.navigation__logo_white{
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 26px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+
+
+
+
+

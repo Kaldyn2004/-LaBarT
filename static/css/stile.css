@@ -1,0 +1,148 @@
+* 
+{
+    font-weight: normal;
+    background-repeat: no-repeat;
+}
+.navigation{
+    color: #FFFFFF;
+}
+.navigation__list{
+    list-style-type: none;
+    color: #FFFFFF;
+}
+.navigation__item_logo {
+    font: normal 400 26px/1 'Oxygen';
+    text-decoration: none;
+}
+.navigation__link {
+    font: normal 400 12px/1.67 'Oxygen';
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.pagination__link {
+    font: normal 400 12px/1.67 'Oxygen';
+    text-decoration: none;
+    color: #768088;
+}
+.navigation__logo{
+    font: normal 400 26px/1 'Lora';
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.header{
+    color: #FFFFFF;
+}
+
+.header__title{
+    font: normal 400 50px/1.02 'Lora'   ;
+}
+.header__subtitle{
+    font: normal 400 17px/1.17 'Oxygen';
+}
+
+.header__background{
+    background-image: url('../img/Canion.jpg');
+    height: 500px;
+}
+.header__button{
+    font: normal 400 13px/1.54 'Oxygen';
+    color: #FFFFFF;
+    background: #DD783F;
+}
+
+.pagination {
+    color: #768088;
+}
+
+.pagination__links{
+    list-style-type: none;  
+}
+
+.pagination__link{
+    font: normal 400 14px/1.43 'Lora';
+    color: #768088;
+}
+
+.content__title{
+    font: normal 400 20px/1.35 'Oxygen';
+    color: #2E2E2E;
+}
+.post__img_siyan{
+    background-image: url('../img/Siyan.png');
+}
+.post__img_fonarik{
+    background-image: url('../img/Fon.png');
+}
+.post__title{
+    font: normal 400 27px/1.11 'Lora';
+    color: #FFFFFF;
+}
+.post__subtitle{
+    font: normal 400 14px/1.79 'Lora';
+    color: #FFFFFF;
+}
+.post__avatar{
+    height: 26px;
+}
+.post__name{
+    font: normal 400 12px/2.92 'Oxygen';
+    color: rgba(255, 255, 255, 0.7);
+}
+.post__date{
+    font: normal 400 12px/2.91 'Oxygen';
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.recent-post__title{
+    font: normal 400 16px/1.31 'Lora';
+    color: #101315;
+}
+
+
+.recent-post__subtitle{
+    font: normal 400 13px/1.46 'Oxygen';
+    color: #7A7A7A;
+}
+
+.recent-post__avatar{
+    height: 26px;
+    border-radius: 60px;
+}
+.recent-post__name{
+    font: normal 400 12px/2.92 'Oxygen';
+    color: #999999;
+}
+.recent-post__date{
+    font: normal 400 12px/2.92 'Oxygen';
+    color: #999999;
+}
+.feedback__background{
+    background-image: url('../img/Split.png');
+    height: 378px;
+}
+
+.feedback__title{
+    font: normal 400 25px/1.2 'Oxygen';
+    text-align: center;
+    color: #EFEFEF;
+}
+
+.feedback__button{
+    font: normal 400 12px/1.2 'Roboto';
+    color: #F8F8F8;
+}
+
+.feedback__input{
+    font: normal 400 12px/1.2 'Roboto';
+    color: #817F83;
+}
+
+
+
+
+
+
+
+
