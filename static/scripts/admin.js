@@ -11,7 +11,7 @@ async function publish() {
      title:  titles.value,
      subtitle: subtitles.value,
      author: authors.value,
-     authorImage: encodedAvatar,
+     authorImage: autorImg.value,
      date: dates.value,
      articleImage: articleImages.value,
      postImage: postImages.value,
