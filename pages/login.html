@@ -20,12 +20,12 @@
      <div class="page-auth__form-auth">
         <div class="form-auth">
           <div class="form-auth__title">Log In</div>
-            <form class="form-login form" action="https://echo.htmlacademy.ru" method="post">
-               <div class="form__error none" id="field-error">
+            <form class="form-login form" id="form" method="post">
+               <div class="form__error" id="field-error">
                  <img class="error__icon" src="../static/svg/alert-circle.svg">
                  <a class="error__text">A-Ah! Check all fields.</a>
                </div>
-               <div class="form__error none"  id="incorrect-error">
+               <div class="form__error"  id="incorrect-error">
                 <img class="error__icon" src="../static/svg/alert-circle.svg">
                 <a class="error__text">Email or password is incorrect.</a>
                </div>
@@ -33,7 +33,7 @@
                   <label class="form__label" for="emails">Email</label>
                   <input id="email" type="email" class="form__input" name="emails" required>
                </div>
-               <a class="error__log none"  id="errorlog1">Email is required.</a>
+              <div class="label__bottom error__log" id="errorlog1">Email is required.</div>
                 <div class="form-login__password">
                   <label class="form__label" for="password-input">Password</label>
                   <div class="password">
@@ -42,9 +42,9 @@
                         <img class="password-icon" id="closed-eye" src="../static/svg/eye-off.svg">
                         <img class="password-icon hide" id="opened-eye" src="../static/svg/eye.svg">
                       </div>
-                  </div>  
-                  <div class="mar"><a class="error__log none" id="errorlog">Password is required.</a></div>
+                  </div> 
                 </div>
+                <div class="mar label__bottom error__log" id="errorlog">Password is required.</div>
                 <input class="form-login__button" type="submit" id="button" value="Log In">
             </form>
         </div>

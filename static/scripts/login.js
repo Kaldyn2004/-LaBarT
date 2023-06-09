@@ -7,9 +7,13 @@ const fieldError = document.getElementById('field-error');
 const incorrectError = document.getElementById('incorrect-error');
 const emailElem = document.getElementById("email");
 const passwordElem = document.getElementById("password");
+const form = document.getElementById("form");
 let isPasswordHidden = true;
 let error1 = false;
 let error2 = false;
+const errorlog = document.getElementById("errorlog");
+const errorlogs = document.getElementById("errorlog1");
+
 toggleButton.addEventListener('click', function () {
   if (isPasswordHidden) {
     passwordField.type = 'text';
@@ -23,79 +27,96 @@ toggleButton.addEventListener('click', function () {
     isPasswordHidden = !isPasswordHidden;
 });
 
-
-function checkFields() {
-  if(emailElem.value !== '') {
-    emailElem.classList.add("input-not-null")
-    element.setAttribute('style', 'border-bottom: 1px solid #2E2E2E;') //вынести в класс и добавлять класс
-  } 
-  var passwordElem = document.getElementById("password-input");
-  if(passwordElem.value !== '') {
-    element.setAttribute('style', 'border-bottom: 1px solid #2E2E2E;') // тоже самоое
-  } 
-}
-
-emailElem.addEventListener('click', function () {
-  if(error1)  {
-    fieldError.classList.add("none");
-    document.getElementById('errorlog').classList.add("none");
-    document.getElementById('errorlog1').classList.add("none");
-    error1 = false;
-  } 
-  if(error2)  {
-    incorrectError.classList.add("none");
-    error2 = false;
-  }  
-});
-passwordElem.addEventListener('click', function () {
-  if(error1)  {
-    fieldError.classList.add("none");
-    error1 = false;
-  } 
-  if(error2)  {
-    incorrectError.classList.add("none");
-    error2 = false;
-  }    
-});
+let pattern =  /^[^\s]+@[^\s]+\.[a-z]{2,3}$/;
 button.addEventListener('click', function () {
-    if((emailElem.value == '') || (passwordElem.value == ''))  {
-      fieldError.classList.remove("none");
-      error1 = true;
-      document.getElementById('errorlog').classList.remove("none");
-      document.getElementById('errorlog1').classList.remove("none");
-    }
-
-    // if((passwordElem.value.element('@')) && (!error1)) {
-    //   incorrectError.classList.remove("none");
-    //   error2 = true;
-    // }
-    if(!  (passw.match(pattern)) && (!error1))   {
-      incorrectError.classList.remove("none");
-      error2 = true;
-    }     
-});
- 
-function validateForm(event) {
   if((emailElem.value == '') || (passwordElem.value == ''))  {
-    fieldError.classList.remove("none");
+    fieldError.classList.add("play");
+    fieldError.classList.remove("unplay");
+    emailElem.classList.add('red-bord');
+    passwordElem.classList.add('red-bord');
     error1 = true;
-    document.getElementById('errorlog').classList.remove("none");
-    document.getElementById('errorlog1').classList.remove("none");
+    errorlog.classList.add("status");
+    errorlogs.classList.add("status");
+  } 
+   if(!(emailElem.value.match(pattern)) && (!error1)){    
+    emailElem.classList.add('red-bord');
+    incorrectError.classList.add("play");
+    incorrectError.classList.remove("unplay");
+    errorlogs.innerHTML = 'Incorrect email format. Correct format is ****@**.***'
+    errorlogs.classList.add("status");
+    error2 = true;
+  }   
+  errorlog.classList.add("p");
+  errorlogs.classList.add("p");
+  errorlog.classList.remove("label__bottom");
+  errorlogs.classList.remove("label__bottom");    
+});
+
+function validateForm(event) {
+  if((emailElem.value.value == '') || (passwordElem.value == ''))  {
+    fieldError.classList.add("play");
+    fieldError.classList.remove("unplay");
+    emailElem.classList.add('red-bord');
+    passwordElem.classList.add('red-bord');
+    error1 = true;
+    errorlog.classList.add("status");
+    errorlogs.classList.add("status");
   }
 
-  // if((passwordElem.value.element('@')) && (!error1)) {
-  //   incorrectError.classList.remove("none");
-  //   error2 = true;
-  // }
-  if(!  (passw.match(pattern)) && (!error1))   {
-    incorrectError.classList.remove("none");
+
+  if(!(passw.match(pattern)) && (!error1)){
+    
+    emailElem.classList.add('red-bord');
+    incorrectError.classList.add("play");
+    incorrectError.classList.remove("unplay");
+    errorlogs.innerHTML = 'Incorrect email format. Correct format is ****@**.***'
+    errorlogs.classList.add("status");
     error2 = true;
-  }    
+  }   
+  errorlog.classList.add("p");
+  errorlogs.classList.add("p");
+  errorlog.classList.remove("label__bottom");
+  errorlogs.classList.remove("label__bottom");  
 } 
-  // const passwordShowButton = loginForm.querySelector('.password-control');
-  // passwordShowButton.addEventListener('click', showHidePassword);
 
+function emailChg() {
+  closeError();
+  let input_taker = emailElem.value;
+  let stile = emailElem.classList;
+  stile.add('add-style');
+  if(input_taker == ''){
+    stile.remove('add-style');
+  }
+}
 
+emailElem.addEventListener('keyup', emailChg);
 
-var passw = passwordElem.value;
-var pattern = /^[^\s]+@[^\s]+\.[a-z]{2,3}$/;
+function passwChg() {
+  closeError();
+  let input_taker = passwordElem.value;
+  let stile = passwordElem.classList;
+  stile.add('add-style');
+  if(input_taker == ''){
+    stile.remove('add-style');
+  }
+}
+
+ function closeError() {
+  emailElem.classList.remove('red-bord');
+  passwordElem.classList.remove('red-bord');
+  errorlog.classList.remove("status");
+  errorlogs.classList.remove("status"); 
+  if(error1)  {
+    fieldError.classList.remove("play");
+    fieldError.classList.add("unplay");
+    error1 = false;
+  } 
+  if(error2)  {
+    incorrectError.classList.remove("play");
+    incorrectError.classList.add("unplay");
+    error2 = false;
+    errorlogs.innerHTML = 'Email is required.'
+  }    
+};
+
+passwordElem.addEventListener('keyup', passwChg);

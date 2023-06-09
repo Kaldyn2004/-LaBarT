@@ -813,12 +813,60 @@ label > button {
     border-radius: 5px;
     border-left: 3px solid #E86961;
     width: 1180px;
-    height: 44px;
     margin: 0 auto;
-    margin-bottom: 16px;
-    display: none;
+    height: 0px;
+    overflow: hidden;
  }
- 
+ .form__luck{
+    display: flex;
+    background-color: #E6FCEF;
+    border-radius: 5px;
+    border-left: 3px solid #67C38C;
+    margin: 0 auto;
+    width: 1180px;
+    height: 0px;
+    overflow: hidden;
+ }
+ .play {
+    animation-duration: 0.3s;
+    animation-name: slidein;
+    margin-bottom: 24px;
+    height: 44px;
+  }
+
+@keyframes slidein {
+    from {
+        margin-bottom: 0;
+        height: 0;
+      }
+    
+      to {
+        margin-bottom: 24px;
+        height: 44px;
+      }
+}
+
+.red-bord{
+    border-bottom: 1px solid #ff0000;
+}
+.unplay {
+    animation-duration: 0.3s;
+    animation-name: unslidein;
+    height: 0;
+    margin-bottom: 0;
+  }
+
+@keyframes unslidein {
+    from {
+        margin-bottom: 24px;
+        height: 44px;
+      }
+    
+      to {
+        margin-bottom: 0;
+        height: 0;
+      }
+}
  .error__icon{
      padding: 8px;
  }

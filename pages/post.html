@@ -4,20 +4,21 @@
   <meta charset="UTF-8" />
   <title>The road ahead</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link  href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&display=swap"  rel="stylesheet"/>
   <link href="../static/css/stile4.css"  type="text/css" rel="stylesheet" />
  </head>
  <body>
   <header class="header">
-    <div class="header__menu cont black">
+    <div class="header__menu cont blacke">
       <a class="header-dom__logotype logotype_white-theme black" href="#">Escape.</a>
-        <nav class="header__navigation navigation">
-          <ul class="navigation__list">
-            <li class="navigation__item"><a class="navigation__link black" href="/post/{postID}">HOME</a></li>
-            <li class="navigation__item"><a class="navigation__link black" href="/post/{postID}">CATEGORIES</a></li>
-            <li class="navigation__item"><a class="navigation__link black" href="/post/{postID}">ABOUT</a></li>
-            <li class="navigation__item"><a class="navigation__link black" href="/post/{postID}">Contact</a></li>
+        <nav class="header__navegation navigation">
+          <ul class="navegation__list">
+            <li class="navegation__item"><a class="navigation__link black" href="/post/{postID}">HOME</a></li>
+            <li class="navegation__item"><a class="navigation__link black" href="/post/{postID}">CATEGORIES</a></li>
+            <li class="navegation__item"><a class="navigation__link black" href="/post/{postID}">ABOUT</a></li>
+            <li class="navegation__item"><a class="navigation__link black" href="/post/{postID}">Contact</a></li>
           </ul>
         </nav>
     </div>
@@ -28,12 +29,12 @@
     <div class="post-body__subtitle">{{ .Subtitle }}</div>
   <div class="post-body__img"><img class="width" src="../{{ .ImgModifier }}" alt="Красивая картинка" ></div>
   <div class="post-body__cont">
-    <a class="post-body__text">{{ .Content }}</div>
+    <a class="post-body__text">{{ .Content }}</a></div>
   </div>
- <footer class="footer footer__background">
+<footer class="footer footer__background">
   <div class="mailing">
     <div class="mailing__title">Stay in Touch</div>
-    <form class="mailing__forms" action="https://echo.htmlacademy.ru" method="post">
+    <form class="mailing__form" action="https://echo.htmlacademy.ru" method="post">
       <input class="mailing__input" type="email" placeholder="Enter your email address" name="email" >
       <input type="submit" class="mailing__button" value="Submit"></input>
     </form>
@@ -43,10 +44,10 @@
       <a class="footer__logotype logotype_white-theme" href="#">Escape.</a>
         <nav class="footer-navigation navigation">
           <ul class="navigation__list">
-            <li class="navigation__item"><a class="footer-navigation__link" href="#">HOME</a></li>
-            <li class="navigation__item"><a class="footer-navigation__link" href="#">CATEGORIES</a></li>
-            <li class="navigation__item"><a class="footer-navigation__link" href="#">ABOUT</a></li>
-            <li class="navigation__item"><a class="footer-navigation__link" href="#">Contact</a></li>
+            <li class="footer-navigation__item"><a class="footer-navigation__link" href="#">HOME</a></li>
+            <li class="footer-navigation__item"><a class="footer-navigation__link" href="#">CATEGORIES</a></li>
+            <li class="footer-navigation__item"><a class="footer-navigation__link" href="#">ABOUT</a></li>
+            <li class="footer-navigation__item"><a class="footer-navigation__link" href="#">Contact</a></li>
           </ul>
         </nav>
     </div>

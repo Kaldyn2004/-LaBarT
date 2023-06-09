@@ -196,21 +196,103 @@
    border-radius: 5px;
    border-left: 3px solid #E86961;
    width: 100%;
-   height: 44px;
-   margin-top: 40px;
+   height: 0px;
+   overflow: hidden;
 }
 
+.play {
+    animation-duration: 0.3s;
+    animation-name: slidein;
+    margin-top: 40px;
+    height: 40px;
+  }
+
+@keyframes slidein {
+    from {
+        margin-top: 0;
+        height: 0;
+      }
+    
+      to {
+        margin-top: 40px;
+        height: 40px;
+      }
+}
+
+.add-style{
+    background-color: #F7F7F7;
+    border-bottom: 1px solid #000000;
+}
+.red-bord{
+    border-bottom: 1px solid #ff0000;
+}
+.unplay {
+    animation-duration: 0.3s;
+    animation-name: unslidein;
+    height: 0;
+    margin-top: 0;
+  }
+
+@keyframes unslidein {
+    from {
+        margin-top: 40px;
+        height: 40px;
+      }
+    
+      to {
+        margin-top: 0;
+        height: 0;
+      }
+}
+.p {
+    animation-duration: 0.3s;
+    animation-name: slid;
+    height: 16px;
+    color: #999999;
+  }
+
+@keyframes slid {
+    from {
+        height: 0;
+      }
+    
+      to {
+        height: 16px;
+      }
+}
+.label__bottom{ 
+    overflow: hidden;
+    height: 0px;
+    color: #999999;
+}
+.status{
+    color: #E86961;
+}
+.unp {
+    animation-duration: 0.3s;
+    animation-name: unslid;
+    height: 0;
+  }
+
+@keyframes unslid {
+    from {
+        height: 16px;
+      }
+    
+      to {
+        height: 0;
+      }
+}
 .error__icon{
     padding: 8px;
 }
 
 .error__log{
     font: 12px/16px 'Oxygen';
-    color:  #E86961;
 }
 
 .mar{
-    margin-top: 44px;
+    margin-top: 46px;
 }
 
 .none{

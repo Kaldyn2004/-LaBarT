@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ .Title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../static/scripts/in.js" defer></script>
   <link href="../static/css/stile4.css"  type="text/css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&display=swap" rel="stylesheet" />
 </head>
@@ -10,7 +12,7 @@
   <header class="header header__background">
     <div class="header__menu cont">
       <a class="header__logotype logotype_white-theme" href="#">Escape.</a>
-        <nav class="header__navigation navigation">
+        <nav id="navigation" class="header__navigation navigation">
           <ul class="navigation__list">
             <li class="navigation__item"><a class="navigation__link" href="#">HOME</a></li>
             <li class="navigation__item"><a class="navigation__link" href="#">CATEGORIES</a></li>
@@ -18,6 +20,11 @@
             <li class="navigation__item"><a class="navigation__link" href="#">Contact</a></li>
           </ul>
         </nav>
+      <div class="menu" id="menu">
+        <div class="menu__item"></div>
+        <div class="menu__item"></div>
+        <div class="menu__item"></div>
+      </div>
     </div>
     <div class="header__blok cont">
       <div class="header__title">Let's do it together.</div>
@@ -86,10 +93,10 @@
         <a class="footer__logotype logotype_white-theme" href="#">Escape.</a>
           <nav class="footer-navigation navigation">
             <ul class="navigation__list">
-              <li class="navigation__item"><a class="footer-navigation__link" href="#">HOME</a></li>
-              <li class="navigation__item"><a class="footer-navigation__link" href="#">CATEGORIES</a></li>
-              <li class="navigation__item"><a class="footer-navigation__link" href="#">ABOUT</a></li>
-              <li class="navigation__item"><a class="footer-navigation__link" href="#">Contact</a></li>
+              <li class="footer-navigation__item"><a class="footer-navigation__link" href="#">HOME</a></li>
+              <li class="footer-navigation__item"><a class="footer-navigation__link" href="#">CATEGORIES</a></li>
+              <li class="footer-navigation__item"><a class="footer-navigation__link" href="#">ABOUT</a></li>
+              <li class="footer-navigation__item"><a class="footer-navigation__link" href="#">Contact</a></li>
             </ul>
           </nav>
       </div>

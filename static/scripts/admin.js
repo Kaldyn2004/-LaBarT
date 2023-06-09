@@ -18,6 +18,17 @@ async function publish() {
      content: contents.value,
    }
      console.log(JSON.stringify(post));
+   if ((titles.value == '') || (subtitles.value == '') || (authors.value == '') || (autorImg.value == '') || (dates.value == '') || (articleImages.value == '') || (postImages.value == '') ||  (contents.value == '')){
+    let error = document.getElementById('incorrect-error');
+    error.classList.add('play');
+    error.classList.remove('unplay');
+    er = true;
+   } else {
+    let succes = document.getElementById('correct-error');
+    succes.classList.add('play');
+    succes.classList.remove('unplay');
+    sc = true;
+   }
   }
 
 
@@ -29,6 +40,8 @@ var postimage;
 var avatar_name;
 var image_name;
 var image;
+var er;
+var sc;
 
 //function nameImage(inputFile) { return inputFile.files[0].name; }
 
@@ -120,6 +133,7 @@ function removeArticleImage() {
 }
 
 function uploadPostImage(event) {
+  closeNotice();
   let reader = new FileReader();
   reader.onload = () => {
     let label = document.getElementById("form__label-description-article");
@@ -160,6 +174,7 @@ function removePostImage() {
 }
 
 function getTitle() {
+  closeNotice();
   let input_taker = document.getElementById('title').value;
   let articleCardTitle = document.getElementById('showTitle');
   let postCardTitle = document.getElementById('cardShowTitle');
@@ -179,6 +194,7 @@ const printTitle = document.getElementById("title");
 printTitle.addEventListener('keyup', getTitle);
 
 function getSubtitle() {
+  closeNotice();
   let input_taker = document.getElementById('subtitle').value;
   let articleCardSubtitle = document.getElementById('showSubitle');
   let postCardSubtitle = document.getElementById('cardShowSubtitle'); 
@@ -197,6 +213,7 @@ const printSubtitle = document.getElementById("subtitle");
 printSubtitle.addEventListener('keyup', getSubtitle);
 
 function getAuthorName() {
+  closeNotice();
   let input_taker = document.getElementById('author').value;
   let postCardAuthor = document.getElementById('showAuthor');
   let stile = document.getElementById('author').classList;
@@ -212,11 +229,31 @@ const printAuthorName = document.getElementById("author");
 printAuthorName.addEventListener('keyup', getAuthorName);
 
 function getPublishDate() {
+  closeNotice();
   let input_taker = document.getElementById('date').value;
+  let year = input_taker.split('-')[0];
+  let month = input_taker.split('-')[1];
+  let day = input_taker.split('-')[2];
+  let newstr = day + '/' + month + '/' + year;
   let postCardDate = document.getElementById('showPublishDate');
-  postCardDate.innerText = input_taker;
+  postCardDate.innerText = newstr;
   document.getElementById('date').classList.add('add-style');
 }
 
 const printPublishDate = document.getElementById("date");
 printPublishDate.addEventListener('change', getPublishDate);
+
+function closeNotice() {
+  if (er) {
+    let error = document.getElementById('incorrect-error');
+    error.classList.remove('play');
+    error.classList.add('unplay');
+    er = false;
+  }
+    if (sc) {
+    let succes = document.getElementById('correct-error');
+    succes.classList.remove('play');
+    succes.classList.add('unplay');
+    sc = false;
+  }
+}

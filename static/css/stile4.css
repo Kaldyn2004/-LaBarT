@@ -11,6 +11,11 @@
     
 }
 
+.header__navegation
+{
+    margin: 29px 1px 0px 0px;
+    
+}
 .cont{
     width: 940px;
     margin: 0 auto;
@@ -20,6 +25,14 @@
     margin: 0 auto;
     text-align: center;
 }
+.navegation__list
+{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .navigation__list
 {
     list-style-type: none;
@@ -358,7 +371,7 @@
     font: 27px Lora, sans-serif;
     color: #FFFFFF;
     text-decoration: none;
-    width: 100%;
+    width: 80%;
     padding: 156px 0 0 20px;  
 }
 
@@ -526,6 +539,8 @@
 .mailing__form
 {
     padding-top: 36px;
+    display: flex;
+    margin: 0 auto;
 }
 
 .mailing__forms
@@ -544,6 +559,18 @@
     padding-left: 39px;
 }
 
+.menu__item{
+    height: 2px;
+    width: 35px;
+    margin-bottom: 5px;
+    background: #FFFFFF;
+}
+
+.menu{
+    display: none;
+    margin-top: 26px;
+    padding: 10px;
+}
 .mailing__button
 {
     border: #F8F8F8;
@@ -554,3 +581,161 @@
     font: 12px Roboto, sans-serif;
     color: #F8F8F8;
 }
+@media screen and (max-width: 1024px) {
+    .content__body {
+        width: 768px;
+    }
+    .large-post{
+        width: 345px;
+    }
+    .recent-post {
+        max-width: 222px;
+    }
+    .recent-post__body {
+        width: 222px;
+    }
+    .recent-post__author::before{
+        width: 222px;
+    }
+    .cont {
+        width: 768px;
+    }
+    .recent-post__author {
+        width: 222px;
+    }
+    .pagination{
+        width: 502px;
+    }
+    .pagination__item {
+        min-width: 0;
+        padding: 0;
+    }
+    .post-body__cont{
+        width: 100%;
+    }
+  }
+
+@media screen and (max-width: 780px) {
+    .content__body {
+        width: 480px;
+    }
+    .navegation__list
+    {
+        flex-direction: column;
+    }
+    .navegation__item{
+        margin: 8px;
+    }
+    .blacke{
+        height: 60px;
+    }
+    .large-post{
+        width: 440px;
+        margin-block-end: 36px;
+    }
+    .recent-post {
+        max-width: 442px;
+    }
+    .recent-post__body {
+        width: 442px;
+    }
+    .recent-post__author::before{
+        width: 442px;
+    }
+    .cont {
+        width: 440px;
+    }
+    .recent-post__author {
+        width: 442px;
+    }
+    .pagination{
+        width: 314px;
+        padding-bottom: 0;
+    }
+    .pagination__item {
+        padding-bottom: 26px;
+    }
+    .pagination__links {
+        justify-content: space-around;
+    }
+    .recent-post__image{
+        width: 442px;
+    }
+    .mailing__button {
+        width: 110px;
+    }
+    .mailing__input {
+        width: 330px;
+    }
+    .header__navigation {
+        flex-direction: column;
+        display: none;
+        position: absolute;
+        margin: 57px 340px;
+        background-color: rgba(35, 47, 56, 0.6);
+    }
+    .menu{
+        display: block;
+    }
+    .navigation__item{
+        margin: 12px;
+    }
+}
+    .header__background {
+        background-image: url(../img/Canion3.jpg);
+    }
+    @media screen and (max-width: 530px) {
+        .header__navigation {
+            margin: 57px 64%;
+        }
+
+        }
+    @media screen and (max-width: 480px) {
+        .content__body {
+            width: 420px;
+        }
+        .large-post{
+            width: 420px;
+            margin-block-end: 36px;
+        }
+        .recent-post {
+            max-width: 442px;
+        }
+        .recent-post__body {
+            width: 420px;
+        }
+        .recent-post__author::before{
+            width: 420px;
+        }
+        .cont {
+            width: 420px;
+        }
+        .recent-post__author {
+            width: 420px;
+        }
+        .pagination{
+            width: 314px;
+            padding-bottom: 0;
+        }
+        .pagination__item {
+            padding-bottom: 26px;
+        }
+        .pagination__links {
+            justify-content: space-around;
+        }
+        .recent-post__image{
+            width: 420px;
+        }
+        .mailing__button {
+            width: 110px;
+        }
+        .mailing__input {
+            width: 220px;
+        }
+    
+        .header__background {
+            background-image: url(../img/Canion3.jpg);
+        }}
+    .active{
+        display: block;
+    }
