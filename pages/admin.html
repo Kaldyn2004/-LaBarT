@@ -18,12 +18,12 @@
       <a class="header__logotype" href="#">author</a></div>
         <div class="header__navigation navigation">
           <a class="header__icon">N</a>
-          <img class="vector__out" src="../static/img/log-out.svg">
+          <img id="log-out" class="vector__out" src="../static/img/log-out.svg">
         </div>
     </div>
 </header>
 <div class="add-post">
-  <form class="form-add-post form" method="post">
+  <form class="form-add-post form" id="forms" method="post">
       <div class="content__menu cont">
         <div class="content__menu_text">
           <a class="content__menu_title">New Post</a>   
@@ -70,9 +70,9 @@
                               <div class="upload__text label-upload" id="autorText">Upload</div>
                           </label>                  
                           <div class="remove-avatar none" id="removeAvatar"><div class="icon-remove"></div><div class="text_upload-new label-upload" style="color: rgb(232, 105, 97);">Remove</div></div>
-                          <input id="author-image" type="file" name="author-image" title="Upload" accept="image/*" style="visibility: hidden" required>
+                          <input id="author-image" type="file" name="author-image" title="Upload" accept="image/*" style="opacity: 0;" required>
                       </div>
-                  </div>
+                  </div> 
                   <div class="title">
                     <label class="form__label" for="date">Publish Date</label>
                       <input type="date" id="date" name="date" min="01/01/2000" max="01/01/2049" class="form-add-post__input date" required>
@@ -85,7 +85,7 @@
                                   <div class="icon-camera"></div>
                                   <div class="label-upload">Upload</div>
                               </label>
-                              <input id="article-image" type="file" name="article-image" accept="image/*" style="visibility: hidden;" required>
+                              <input id="article-image" type="file" name="article-image" accept="image/*" style="opacity: 0;" required>
                               <img class="article-image-from-input none" id="showArticleImage" >
                           </div>
                       </div>
@@ -110,7 +110,7 @@
                                   <div class="icon-camera"></div>
                                   <div class="label-upload">Upload</div>
                               </label>
-                              <input id="post-image" type="file" name="post-image" accept="image/*" style="visibility: hidden;" required>
+                              <input id="post-image" type="file" name="post-image" accept="image/*" style="opacity: 0;" required>
                               <img class="post-image-from-input none" id="showPostImage" >
                           </div>
                           <div class="form__upload__article-image__description">

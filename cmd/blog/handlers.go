@@ -12,15 +12,30 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/gorilla/mux"
 	"github.com/jmoiron/sqlx"
+)
+
+const (
+	authCookieName = "auth"
 )
 
 type indexPage struct {
 	Title         string
 	FeaturedPosts []*featuredPostData
 	RecentPosts   []*recentPostData
+}
+
+type loginRequest struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+type user struct {
+	UserID int    `db:"user_id"`
+	Email  string `db:"email"`
 }
 
 type createPostRequest struct {
@@ -104,7 +119,7 @@ func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func login(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
+func loginPage(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		ts, err := template.ParseFiles("pages/login.html") // Главная страница блога
 		if err != nil {
@@ -124,8 +139,67 @@ func login(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func login(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userData, err := io.ReadAll(r.Body)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
+
+		var field loginRequest
+
+		err = json.Unmarshal(userData, &field)
+		if err != nil {
+			http.Error(w, "Internal Server Error Unmarshall", 500)
+			log.Println(err.Error())
+			return
+		}
+
+		user, err := userByEmailAndPassword(db, field.Email, field.Password)
+		if err != nil {
+			if err == sql.ErrNoRows {
+				http.Error(w, "Incorrect password or email!", 401)
+				return
+			}
+			http.Error(w, "Internal Server Error (user)", 500)
+			log.Println(err.Error())
+			return
+		}
+
+		http.SetCookie(w, &http.Cookie{
+			Name:    authCookieName,
+			Value:   fmt.Sprint(user.UserID),
+			Path:    "/",
+			Expires: time.Now().AddDate(0, 0, 1),
+		})
+
+		w.WriteHeader(200)
+
+		log.Println("Request completed successfully")
+	}
+}
+
+func logout() func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		http.SetCookie(w, &http.Cookie{
+			Name:    authCookieName, // Устанавливаем имя куки, которую нужно удалить
+			Path:    "/",
+			Expires: time.Now().AddDate(0, 0, -1), // Выставляем дату протухания в “прошлом”
+		})
+
+		log.Println("Request completed successfully")
+	}
+}
+
 func admin(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+		err := authByCookie(db, w, r) //проверка на куки
+		if err != nil {
+			return
+		}
+
 		ts, err := template.ParseFiles("pages/admin.html") // Главная страница блога
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500) // В случае ошибки парсинга - возвращаем 500
@@ -191,58 +265,65 @@ func post(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 
 func createPost(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		reqData, err := io.ReadAll(r.Body)
+
+		postData, err := io.ReadAll(r.Body)
 		if err != nil {
-			http.Error(w, "Internal Server Error", 500)
+			http.Error(w, "Internal Server Error", 501)
 			log.Println(err)
 			return
 		}
 
-		var req createPostRequest
-
-		err = json.Unmarshal(reqData, &req)
+		var field createPostRequest
+		err = json.Unmarshal(postData, &field)
 		if err != nil {
-			http.Error(w, "Internal Server Error Unmarshall", 500)
+			http.Error(w, "Internal Server Error Unmarshall", 502)
 			log.Println(err.Error())
 			return
 		}
 
-		var encodedAvatar = req.AuthorImg[strings.IndexByte(req.AuthorImg, ',')+1:]
+		var encodedAvatar = field.AuthorImg[strings.IndexByte(field.AuthorImg, ',')+1:]
 
 		avatar, err := base64.StdEncoding.DecodeString(encodedAvatar)
 		if err != nil {
-			http.Error(w, "Internal Server Error avatar", 500)
+			http.Error(w, "Internal Server Error (avatar not decoded)", 503)
 			log.Println(err.Error())
 			return
 		}
 
-		fileAvatar, err := os.Create("static/img/" + req.AuthorImgName) // создаем файл с именем переданным от фронта в папке static/img
-		_, err = fileAvatar.Write(avatar)                               // Записываем контент картинки в файл
+		fileAvatar, err := os.Create("static/img/" + field.AuthorImgName) // создаем файл с именем переданным от фронта в папке static/img
+		_, err = fileAvatar.Write(avatar)                                 // Записываем контент картинки в файл
+		if err != nil {
+			http.Error(w, "Internal Server Error (no wrote avatar in file)", 504)
+			log.Println(err.Error())
+			return
+		}
 
-		var encodedImage = req.Image[strings.IndexByte(req.AuthorImg, ',')+1:]
+		var encodedImage = field.Image[strings.IndexByte(field.AuthorImg, ',')+1:]
 
 		image, err := base64.StdEncoding.DecodeString(encodedImage)
 		if err != nil {
-			http.Error(w, "Internal Server Error image", 500)
+			http.Error(w, "Internal Server Error (post image not decoded)", 505)
 			log.Println(err.Error())
 			return
 		}
 
-		fileImage, err := os.Create("static/img/" + req.ImageName) // создаем файл с именем переданным от фронта в папке static/img
-		_, err = fileImage.Write(image)                            // Записываем контент картинки в файл
-
-		var newDate = req.PublishDate
-		req.PublishDate = formatDate(newDate)
-
-		err = savePost(db, req)
+		fileImage, err := os.Create("static/img/" + field.ImageName) // создаем файл с именем переданным от фронта в папке static/img
+		_, err = fileImage.Write(image)                              // Записываем контент картинки в файл
 		if err != nil {
-			http.Error(w, "Internal Server Error savepost", 500)
+			http.Error(w, "Internal Server Error (no wrote post-image in file)", 506)
+			log.Println(err.Error())
+			return
+		}
+
+		err = savePost(db, field)
+		if err != nil {
+			http.Error(w, "Internal Server Error (savepost)", 507)
 			log.Println(err.Error())
 			return
 		}
 
 		return
-		// log.Println("Request completed successfully")
+
 	}
 }
 
@@ -335,7 +416,7 @@ func postByID(db *sqlx.DB, postID int) (postData, error) {
 	return post, nil
 }
 
-func savePost(db *sqlx.DB, req createPostRequest) error {
+func savePost(db *sqlx.DB, field createPostRequest) error {
 	const query = `
 		INSERT INTO
 			post
@@ -360,9 +441,7 @@ func savePost(db *sqlx.DB, req createPostRequest) error {
 		)
 	`
 
-	//CONCAT('static/img/', ?),
-
-	_, err := db.Exec(query, req.Title, req.Subtitle, req.Author, req.AuthorImgName, req.PublishDate, req.ImageName, req.Content)
+	_, err := db.Exec(query, field.Title, field.Subtitle, field.Author, field.AuthorImgName, field.PublishDate, field.ImageName, field.Content)
 	return err
 }
 
@@ -370,4 +449,76 @@ func formatDate(oldDate string) string {
 	dateStr := strings.Split(oldDate, "-")
 	newDateStr := dateStr[2] + "/" + dateStr[1] + "/" + dateStr[0]
 	return newDateStr
+}
+
+func authByCookie(db *sqlx.DB, w http.ResponseWriter, r *http.Request) error {
+	cookie, err := r.Cookie(authCookieName)
+	if err != nil {
+		if err == http.ErrNoCookie {
+			http.Error(w, "No auth cookie passed", 401)
+			log.Println(err)
+			return err
+		}
+		http.Error(w, "Internal Server Error", 500)
+		return err
+	}
+
+	userIDStr := cookie.Value
+
+	userID, err := strconv.Atoi(userIDStr) // conv str to int
+	if err != nil {
+		http.Error(w, "Invalid user id", 403)
+		log.Println(err)
+		return err
+	}
+
+	_, err = userByID(db, userID)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			http.Error(w, "USer not found!", 403)
+			log.Println(err)
+			return err
+		}
+		http.Error(w, "Internal server error", 500)
+		log.Println(err)
+		return err
+	}
+
+	return nil
+}
+
+func userByEmailAndPassword(db *sqlx.DB, email, password string) (user, error) {
+	const query = `
+	SELECT
+		user_id,
+		email
+	FROM user	
+	WHERE email = ? AND password = ?
+	`
+	var u user
+
+	err := db.Get(&u, query, email, password)
+	if err != nil {
+		return user{}, err
+	}
+
+	return u, nil
+}
+
+func userByID(db *sqlx.DB, userID int) (user, error) {
+	const query = `
+	SELECT
+		user_id,
+		email
+	FROM user	
+	WHERE user_id = ?
+	`
+	var u user
+
+	err := db.Get(&u, query, userID)
+	if err != nil {
+		return user{}, err
+	}
+
+	return u, nil
 }

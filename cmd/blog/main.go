@@ -23,16 +23,18 @@ func main() {
 	}
 
 	dbx := sqlx.NewDb(db, dbDriverName) // Расширяем стандартный клиент к базе
-
 	mux := mux.NewRouter()
-	mux.HandleFunc("/home", index(dbx)) // Передаём клиент к базе данных в ф-ию обработчик запроса
-	mux.HandleFunc("/login", login(dbx))
-	mux.HandleFunc("/admin", admin(dbx))
 
-	// Указывем orderID поста в URL для перехода на конкретный пост
+	mux.HandleFunc("/home", index(dbx)) // Передаём клиент к базе данных в ф-ию обработчик запроса
+	mux.HandleFunc("/admin", admin(dbx))
 	mux.HandleFunc("/post/{postID}", post(dbx))
 
-	// Правим отдачу статического контента, в виду перезда на новый роутер
+	mux.HandleFunc("/api/post", createPost(dbx)).Methods(http.MethodPost)
+
+	mux.HandleFunc("/login", loginPage(dbx))
+	mux.HandleFunc("/logout", logout())
+	mux.HandleFunc("/api/login", login(dbx)).Methods(http.MethodPost)
+
 	mux.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
 	fmt.Println("Start server")
